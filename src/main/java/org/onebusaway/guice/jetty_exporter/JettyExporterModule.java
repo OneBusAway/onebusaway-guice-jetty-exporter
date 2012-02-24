@@ -17,8 +17,10 @@ package org.onebusaway.guice.jetty_exporter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Module;
 import com.google.inject.TypeLiteral;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.spi.InjectionListener;
@@ -28,7 +30,11 @@ import com.google.inject.spi.TypeListener;
 public class JettyExporterModule extends AbstractModule {
 
   private final List<ServletSource> _sources = new ArrayList<ServletSource>();
-  
+
+  public static void addModuleAndDependencies(Set<Module> modules) {
+    modules.add(new JettyExporterModule());
+  }
+
   protected List<ServletSource> getSources() {
     return _sources;
   }
@@ -51,6 +57,24 @@ public class JettyExporterModule extends AbstractModule {
 
     bind(JettyExporterServiceImpl.class).toInstance(
         new JettyExporterServiceImpl(_sources));
+  }
+
+  /**
+   * Implement hashCode() and equals() such that two instances of the module
+   * will be equal.
+   */
+  @Override
+  public int hashCode() {
+    return this.getClass().hashCode();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null)
+      return false;
+    return this.getClass().equals(o.getClass());
   }
 
   private static class InjectionListenerImpl<I> implements InjectionListener<I> {
