@@ -1,5 +1,6 @@
 /**
  * Copyright (C) 2011 Brian Ferris <bdferris@onebusaway.org>
+ * Copyright (C) 2012 Google, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +32,30 @@ public class JettyExporterModule extends AbstractModule {
 
   private final List<ServletSource> _sources = new ArrayList<ServletSource>();
 
-  public static void addModuleAndDependencies(Set<Module> modules) {
+  /**
+   * Adds the {@link JettyExporterModule} and any other dependent modules to the
+   * modules set in order to construct an appropriate Guice Injector module
+   * list. The method can be called multiple times and only one instance of
+   * {@link JettyExporterModule} will be added.
+   * 
+   * @param modules
+   * @return the singleton instance of the module added to the modules list.
+   */
+  public static JettyExporterModule addModuleAndDependencies(Set<Module> modules) {
     modules.add(new JettyExporterModule());
+    /**
+     * We loop over the module list, looking for the JettyExporterModule that
+     * might have already been added in a previous call.
+     */
+    for (Module module : modules) {
+      if (module instanceof JettyExporterModule) {
+        return (JettyExporterModule) module;
+      }
+    }
+    throw new IllegalStateException("could not find JettyExporterModule");
   }
 
-  protected List<ServletSource> getSources() {
+  public List<ServletSource> getSources() {
     return _sources;
   }
 
