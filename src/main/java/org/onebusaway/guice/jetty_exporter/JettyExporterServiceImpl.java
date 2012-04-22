@@ -68,6 +68,7 @@ public class JettyExporterServiceImpl {
     for (Server server : _servers) {
       server.stop();
     }
+    _servers.clear();
   }
 
   /****
