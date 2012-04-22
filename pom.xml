@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>onebusaway</artifactId>
@@ -10,6 +11,11 @@
   <name>onebusaway-guice-jetty-exporter</name>
   <description>A Guice module for exporting Servlets to a Jetty server instance.</description>
   <url>https://github.com/OneBusAway/onebusaway-guice-jetty-exporter/wiki/</url>
+
+  <properties>
+    <!--  These properties are primarily used in configuring joint integration tests -->
+    <org_onebusaway_test_port>9900</org_onebusaway_test_port>
+  </properties>
 
   <repositories>
     <repository>
@@ -63,6 +69,12 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.5.6</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.onebusaway</groupId>
+      <artifactId>onebusaway-guice-jsr250</artifactId>
+      <version>1.0.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
