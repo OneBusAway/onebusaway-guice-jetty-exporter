@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="onebusaway-guice-jetty-exporter">
+  <body>
+    <links>
+      <item name="GitHub Project" href="http://github.com/OneBusAway/onebusaway-guice-jetty-exporter/" />
+    </links>
+    <menu name="Introduction">
+      <item name="About" href="/index.html" />
+      <item name="GitHub Project" href="http://github.com/OneBusAway/onebusaway-guice-jetty-exporter/" />
+      <item name="Release Notes" href="/release-notes.html" />
+      <item name="API Javadoc" href="/apidocs/index.html" />
+    </menu>
+    <menu ref="reports" />
+  </body>
+</project>

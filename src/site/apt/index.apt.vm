@@ -1,0 +1,7 @@
+onebusaway-guice-jetty-exporter
+
+  Provides a library for easily exporting Java servlets within a Jetty container through a simple Guice configuration.
+  
+  <<Current Version:>> ${currentVersion}
+
+  Details on all releases can be found in the {{{./release-notes.html}Release Notes}}.

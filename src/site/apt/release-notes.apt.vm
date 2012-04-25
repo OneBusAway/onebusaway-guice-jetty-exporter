@@ -1,0 +1,17 @@
+Release Notes
+
+* ${currentVersion}
+
+  * Initial site documentation.
+
+  * Make Guice module dependencies explicit in the OneBusAway Guice style.
+  
+  * Fix bug where server socket was not properly closed when stopping a server.
+  
+  * Full Documentation: {{${site_base_url}/onebusaway-guice-jetty-exporter/${currentVersion}/}}
+
+* 1.0.0
+
+  * Initial release.
+  
+  * Full Documentation: {{${site_base_url}/onebusaway-guice-jetty-exporter/1.0.0/}}
