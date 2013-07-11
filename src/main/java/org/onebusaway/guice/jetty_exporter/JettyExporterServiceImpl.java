@@ -1,5 +1,6 @@
 /**
  * Copyright (C) 2011 Brian Ferris <bdferris@onebusaway.org>
+ * Copyright (C) 2012 Google, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,9 +26,11 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.servlet.Servlet;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
 public class JettyExporterServiceImpl {
 
@@ -47,13 +50,20 @@ public class JettyExporterServiceImpl {
     for (int port : servicesByPort.keySet()) {
 
       Server server = new Server(port);
-      Context context = new Context(server, "/", Context.SESSIONS);
-
+      
+      List<Handler> handlers = new ArrayList<Handler>();
       for (ServletSource service : servicesByPort.get(port)) {
         URL url = service.getUrl();
         Servlet servlet = service.getServlet();
-        context.addServlet(new ServletHolder(servlet), url.getPath());
+        ServletHandler servletHandler = new ServletHandler();
+        servletHandler.addServletWithMapping(new ServletHolder(servlet),
+            url.getPath());
+        handlers.add(servletHandler);
       }
+      
+      HandlerList handlersList = new HandlerList();
+      handlersList.setHandlers(handlers.toArray(new Handler[handlers.size()]));
+      server.setHandler(handlersList);
 
       _servers.add(server);
     }

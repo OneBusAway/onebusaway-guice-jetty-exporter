@@ -3,17 +3,18 @@
   <parent>
     <artifactId>onebusaway</artifactId>
     <groupId>org.onebusaway</groupId>
-    <version>1.1.8</version>
+    <version>1.1.9</version>
   </parent>
   <artifactId>onebusaway-guice-jetty-exporter</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <name>onebusaway-guice-jetty-exporter</name>
   <description>A Guice module for exporting Servlets to a Jetty server instance.</description>
   <url>https://github.com/OneBusAway/onebusaway-guice-jetty-exporter/wiki/</url>
 
   <properties>
+    <jetty.version>8.1.11.v20130520</jetty.version>
     <!--  These properties are primarily used in configuring joint integration tests -->
-    <org_onebusaway_test_port>9900</org_onebusaway_test_port>
+    <org_onebusaway_test_port>9900</org_onebusaway_test_port>    
   </properties>
 
   <repositories>
@@ -41,7 +42,7 @@
       <url>${site_url}</url>
     </site>
   </distributionManagement>
-
+  
   <dependencies>
     <dependency>
       <groupId>com.google.inject</groupId>
@@ -49,14 +50,19 @@
       <version>3.0</version>
     </dependency>
     <dependency>
-      <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jetty-embedded</artifactId>
-      <version>6.1.26</version>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-webapp</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlets</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.5.6</version>
+      <version>1.7.5</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -67,7 +73,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>1.5.6</version>
+      <version>1.7.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
