@@ -3,16 +3,16 @@
   <parent>
     <artifactId>onebusaway</artifactId>
     <groupId>org.onebusaway</groupId>
-    <version>1.1.9</version>
+    <version>1.2.0-SNAPSHOT</version>
   </parent>
   <artifactId>onebusaway-guice-jetty-exporter</artifactId>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.2.0-SNAPSHOT</version>
   <name>onebusaway-guice-jetty-exporter</name>
   <description>A Guice module for exporting Servlets to a Jetty server instance.</description>
   <url>https://github.com/OneBusAway/onebusaway-guice-jetty-exporter/wiki/</url>
 
   <properties>
-    <jetty.version>8.1.11.v20130520</jetty.version>
+    <jetty.version>9.0.5.v20130815</jetty.version>
     <!--  These properties are primarily used in configuring joint integration tests -->
     <org_onebusaway_test_port>9900</org_onebusaway_test_port>    
   </properties>
