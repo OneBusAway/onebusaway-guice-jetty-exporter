@@ -6,7 +6,7 @@
     <version>1.2.2</version>
   </parent>
   <artifactId>onebusaway-guice-jetty-exporter</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>1.2.0</version>
   <name>onebusaway-guice-jetty-exporter</name>
   <description>A Guice module for exporting Servlets to a Jetty server instance.</description>
   <url>https://github.com/OneBusAway/onebusaway-guice-jetty-exporter/wiki/</url>
